@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WpfApp1.Common
+{
+    // MD5加密工具
+    public class MD5Provider
+    {
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = MD5.Create();
+            byte[] pws = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
+            string pwd = "";
+            foreach(var item in pws)
+            {
+                pwd += item.ToString("X2");
+            }
+            return pwd;
+        }
+    }
+}
